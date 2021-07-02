@@ -1,0 +1,25 @@
+@use "sass:math";
+
+.row {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+$columns: 12;
+
+// [class^=col-] {
+//     flex-basis: 100%;
+// }
+
+.col {
+    height: 60px;
+}
+
+@for $i from 1 through $columns {
+    .col-#{$i} {
+        flex: 0 0 math.div(100%, math.div($columns, $i));
+    }
+    .col-offset-#{$i} {
+        margin-left: math.div(100%, math.div($columns, $i));
+    }
+}
